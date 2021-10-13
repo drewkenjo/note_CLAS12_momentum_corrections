@@ -1,0 +1,588 @@
+\appendix
+
+\section{Codes}
+
+\subsection{Inbending Data: Momentum Corrections Script}
+\label{app:in_code}
+  \begin{verbatim}
+double xx[] = 
+{
+0.0263375, 0.0158871, 0.0130852, 0.0252757, 0.0156601, 0.00984872,
+0.0171495, 0.00359637, -0.0046115, 0.0189465, 0.0131816, 0.0262004,
+0.0116485, 0.0105681, 0.0149848, 0.0213057, 0.0112999, 0.0100216,
+-0.00366006, 0.00694866, 0.0197195, 0.00244435, 0.00681414, 0.0294068,
+0.00314739, 0.0136338, 0.0768753, 0.00375165, 0.00907457, 0.0486894,
+0.000318094, -0.00480124, 0.0395545, 0.000653685, 0.0093174, 0.0822385,
+0.0290127, 0.019353, 0.00619702, 0.0250068, 0.0127755, 0.00356361,
+0.0258017, 0.011097, -0.00706104, 0.0314799, 0.017144, 0.00642617,
+0.0322597, 0.0214737, 0.0123113, 0.0294037, 0.0235748, 0.0127779
+};
+
+double pars[3][6][3];
+int ipar=0;
+
+for(int ivec=0;ivec<3;ivec++)
+for(int isec=0;isec<6;isec++)
+{
+    if(ivec!=2) {
+        double dp1=xx[ipar++], dp5=xx[ipar++], dp9=xx[ipar++];
+
+        pars[ivec][isec][0] = (dp1 - 2*dp5 + dp9)/32.;
+        pars[ivec][isec][1] = (-7*dp1)/16. + (5*dp5)/8. - (3*dp9)/16.;
+        pars[ivec][isec][2] = (45*dp1)/32. - (9*dp5)/16. + (5*dp9)/32.;
+    } else {
+        double dp1=xx[ipar++], dp2=xx[ipar++], dp4=xx[ipar++];
+
+        double a = (dp4 - 3*dp2 + 2*dp1) / 6.0;
+        double b = dp2 - dp1 - 3*a;
+        double c = dp1 - a -b;
+
+        pars[ivec][isec][0] = a;
+        pars[ivec][isec][1] = b;
+        pars[ivec][isec][2] = c;
+    }
+}
+
+auto dpp = [&](float px, float py, float pz, int sec, int ivec)
+{
+    double pp = sqrt(px*px + py*py + pz*pz);
+
+    double a=pars[ivec][sec-1][0],
+           b=pars[ivec][sec-1][1],
+           c=pars[ivec][sec-1][2];
+
+    double dp = a*pp*pp + b*pp + c; //pol2 corr func
+   
+    //electron correction
+    if(ivec == 0)
+    {
+        double fi = (180/3.1415926)*atan2(py,px);
+        double fiv, phi;
+       
+        if(fi < 0 && sec > 1)
+        {
+            fiv = fi + 360 - (sec -1)*60;
+            phi = fiv - 30/pp;
+        }
+        else
+        {
+            fiv = fi - (sec -1)*60;
+            phi = fiv - 30/pp;
+        }        
+        
+        if(sec == 1)
+        {
+            //dp = 0.45*b*(pp-9)+0.1*c;
+            
+            //3phi bins
+            if(phi<-5)
+            {
+                dp = -0.01*b*(pp-9)+1.1*c; //phi<-5
+            }
+            if(phi>-5 && phi<5)
+            {
+                dp = 0.45*b*(pp-9)+0.1*c; //-5<phi<5
+            }
+            if(phi>5)
+            {
+                dp = 1.4*b*(pp-9)-1.15*c; //phi>5
+            }
+            
+            //continuous phi 
+            //dp = (0.0290873 - 0.1122773*phi)*c + (0.5889888 + 0.0700636*phi)*(pp-9)*b;
+        }
+        if(sec == 2)
+        {
+            //dp = -0.15*b*(pp-8.0)+0.1*c;
+            
+            //3phi bins
+            if(phi<-5)
+            {
+                dp = -0.7*b*(pp-8.0)+0.5*c; //phi<-5
+            }
+            if(phi>-5 && phi<5)
+            {
+                dp = -0.15*b*(pp-8.0)+0.1*c; //-5<phi<5
+            }
+            if(phi>5)
+            {
+                dp = 1.7*b*(pp-8.0)-0.55*c; //phi>5
+            }
+            
+            //continuous phi
+            //dp = (0.0324470 - 0.0510634 *phi)*c + (0.2012758 + 0.1125300*phi)*(pp-8.0)*b;
+        }
+        if(sec == 3)
+        {
+             //dp = 2.*b*(pp-5.4)-0.6*c;
+            
+            //3phi bins
+            if(phi<-5)
+            {
+                dp = 2.75*b*(pp-5.4)-1.0*c; //phi<-5
+            }
+            if(phi>-5 && phi<5)
+            {
+                dp = 2.*b*(pp-5.4)-0.6*c; //-5<phi<5
+            }
+            if(phi>5)
+            {
+                dp = 1.25*b*(pp-5.4)+0.1*c; //phi>5
+            }
+            
+            //continuous phi
+            //dp = (-0.5193361 + 0.0539498*phi)*c + (1.9999999 - 0.075*phi)*(pp-5.4)*b;
+        }
+        if(sec == 4)
+        {
+            //dp = 0.25*b*(pp-9.25)+0.5*c;
+            
+            //3phi bins
+            if(phi<-5)
+            {
+                dp = 0.25*b*(pp-9.25)+0.01*c; //phi<-5
+            }
+            if(phi>-5 && phi<5)
+            {
+                dp = 0.25*b*(pp-9.25)+0.5*c; //-5<phi<5
+            }
+            if(phi>5)
+            {
+                dp = 0.1*b*(pp-9.25)+1.1*c; //phi>5
+            }
+            
+            //continuous phi
+            //dp = (0.5291182 + 0.0542994*phi)*c + (0.2102934 -0.0072264*phi)*(pp-9.25)*b;
+        }
+        if(sec == 5)
+        {
+            //dp = 2.2*b*(pp-7.5);
+            
+            //3phi bins
+            if(phi<-5)
+            {
+                dp = 2.2*b*(pp-7.5); //phi<-5
+            }
+            if(phi>-5 && phi<5)
+            {
+                dp = 2.2*b*(pp-7.5); //-5<phi<5
+            }
+            if(phi>5)
+            {
+                dp = 2.2*b*(pp-7.5); //phi>5
+            }
+            
+            //continuous phi
+            //dp = (0.0 + 0.0*phi)*c + (2.2000000 -0.0*phi)*(pp-7.5)*b;
+        }
+        if(sec == 6)
+        {
+            //dp = 0.5*b*(pp-7)-0.1*c;
+            
+            //3phi bins
+            if(phi<-5)
+            {
+                dp = 0.95*b*(pp-7)+0.25*c; //phi<-5
+            }
+            if(phi>-5 && phi<5)
+            {
+                dp = 0.5*b*(pp-7)-0.1*c; //-5<phi<5
+            }
+            if(phi>5)
+            {
+                dp = 1.25*b*(pp-7)-0.7*c; //phi>5
+            }
+            
+            //continuous phi
+            //dp = (-0.1698254 - 0.0468317*phi)*c + (0.8351623 + 0.0117921*phi)*(pp-7)*b;
+        }
+    }
+    
+    //pi+ correction
+    if(ivec == 1)
+    {
+        if(sec == 1)
+        {
+            //dp = 0.0027414*pp - 0.01255441;
+            dp = -0.00012722*pp*pp + 0.00378241*pp -0.01538458;
+        }
+        if(sec == 2)
+        {
+            //dp = 0.00154639*pp - 0.01142349;
+            dp = 0.0004271*pp*pp -0.00122126*pp -0.00818125;
+        }
+        if(sec == 3)
+        {
+            //dp = 0.0074493*pp - 0.02612722;
+            dp = 0.0001706*pp*pp + 0.0057443*pp -0.02367141;
+        }
+        if(sec == 4)
+        {
+            //dp = 0.00553162*pp - 0.01824611;
+            dp = 0.00052789*pp*pp + 0.00164459*pp -0.01315805;
+        }
+        if(sec == 5)
+        {
+            //dp = 0.00464237*pp - 0.02455968;
+            dp = 0.00068511*pp*pp -0.00047038*pp -0.01811211;
+        }
+        if(sec == 6)
+        {
+            //dp = 0.00682962*pp - 0.021153;
+            dp = 0.00175784*pp*pp -0.00370665*pp -0.01051892;
+        }
+    }
+    
+    return dp/pp;
+};
+
+double fe = dpp(ex,ey,ez,esec,0) + 1;
+double fpip = dpp(pipx,pipy,pipz,pipsec,1) + 1;
+double fpim = dpp(pimx,pimy,pimz,pimsec,2) + 1;
+  \end{verbatim}
+  
+\subsection{Outbending Data: Momentum Corrections Script}
+\label{app:out_code}
+\begin{verbatim}
+double xx[] = 
+{
+0.0219879, 0.00406117, 0.000287491, 0.0244179, 0.0169383, 0.000121762,
+0.0209204, -0.000675913, -0.00874854, 0.025209, 0.0113607, -0.0104661,
+0.0211029, 0.00524283, 0.0116993, 0.0242328, 0.00706621, -0.0185997,
+0.0240847, 0.0054933, 0.00358604, 0.0264154, 0.0111607, -0.00691424,
+0.0243936, -1.30348e-06, -0.0157793, 0.0222698, 0.0123583, -0.00728148,
+0.0224922, 0.0200913, 0.0337443, 0.0262862, 0.0170036, -0.00152548
+};
+
+  double pars[6][2][3];
+  int ipar=0;
+  for(int isec=0;isec<6;isec++)
+  for(int ivec=0;ivec<2;ivec++) {
+      if (ivec==0) {
+      double dp1=xx[ipar++], dp5=xx[ipar++], dp9=xx[ipar++];
+
+      pars[isec][ivec][0] = (dp1 - 2*dp5 + dp9)/32.;
+      pars[isec][ivec][1] = (-7*dp1)/16. + (5*dp5)/8. - (3*dp9)/16.;
+      pars[isec][ivec][2] = (45*dp1)/32. - (9*dp5)/16. + (5*dp9)/32.;
+    } else {
+      double dp1=xx[ipar++], dp2=xx[ipar++], dp4=xx[ipar++];
+
+      double a = (dp4 - 3*dp2 + 2*dp1) / 6.0;
+      double b = dp2 - dp1 - 3*a;
+      double c = dp1 - a -b;
+
+      pars[isec][ivec][0] = a;
+      pars[isec][ivec][1] = b;
+      pars[isec][ivec][2] = c;
+    }
+  }
+
+  auto dpp = [&](float px, float py, float pz, int sec, int ipart) {
+    double pp = sqrt(px*px + py*py + pz*pz);
+
+    int ivec = ipart==1 ? 1 : 0;
+    double a=pars[sec-1][ivec][0],
+           b=pars[sec-1][ivec][1],
+           c=pars[sec-1][ivec][2];
+
+    double dp = a*pp*pp + b*pp + c;
+        
+    //electron correction
+    if(ivec == 0)
+    {
+        double fi = (180/3.1415926)*atan2(py,px);
+        double fiv, phi;
+       
+        if(fi < 0 && sec > 1)
+        {
+            fiv = fi + 360 - (sec -1)*60;
+            phi = fiv - 30/pp;
+        }
+        else
+        {
+            fiv = fi - (sec -1)*60;
+            phi = fiv - 30/pp;
+        }
+        
+        if(sec == 1)
+        {
+           //dp = 0.5*b*pp + 1.7*c;
+           
+           //3phi bins
+           if(phi<-5)
+           {
+               dp = 1.0*b*pp + 1.55*c; //phi<-5
+           }
+           if(phi>-5 && phi<5)
+           {
+               dp = 1.0*b*pp + 2.4*c; //5<phi<-5
+           }
+           if(phi>5)
+           {
+               dp = 0.5*b*pp + 2.5*c; //phi>5
+           }
+           
+           //continuous phi
+           //dp = (0.8320239383479552 - 0.024826860499612673*phi)*b*pp + (2.148035922792136 + 0.04775971171732617*phi)*c;
+        }
+        if(sec == 2)
+        {
+           //dp = b*pp + 2.5*c;
+           
+           //3phi bins
+           if(phi<-5)
+           {
+               dp = 1.2*b*pp + 2.3*c; //phi<-5
+           }
+           if(phi>-5 && phi<5)
+           {
+               dp = 0.9*b*pp + 2.25*c; //5<phi<-5
+           }
+           if(phi>5)
+           {
+               dp = 0.8*b*pp + 2.8*c; //phi>5
+           }
+           
+           //continuous phi
+           //dp = (0.9657322243870425 - 0.020356091967535975*phi)*b*pp + (2.447196607558619 + 0.023931730204671712*phi)*c;
+        }
+        if(sec == 3)
+        {
+           //dp = 0.5*b*pp + 2.*c;
+           
+           //3phi bins
+           if(phi<-5)
+           {
+               dp = 0.5*b*pp + 2.25*c; //phi<-5
+           }
+           if(phi>-5 && phi<5)
+           {
+               dp = 0.5*b*pp + 2.*c; //5<phi<-5
+           }
+           if(phi>5)
+           {
+               dp = 0.5*b*pp + 1.75*c; //phi>5
+           }
+           
+           //continuous phi
+           //dp = (0.49999999999999994 - 0.0000000000000000003*phi)*b*pp + (1.9999999999999998 - 0.02500000000000001*phi)*c;
+        }
+        if(sec == 4)
+        {
+           //dp = b*pp + 2.45*c;
+           
+           //3phi bins
+           if(phi<-5)
+           {
+               dp = 0.8*b*pp + 2.3*c; //phi<-5
+           }
+           if(phi>-5 && phi<5)
+           {
+               dp = b*pp + 2.4*c; //5<phi<-5
+           }
+           if(phi>5)
+           {
+               dp = b*pp + 2.35*c; //phi>5
+           }
+           
+           //continuous phi
+           //dp = (0.9321529224405625 + 0.010095561250732734*phi)*b*pp + (2.349114670932819 + 0.002571669164656589*phi)*c;
+        }
+        if(sec == 5)
+        {
+           //dp = b*pp + 1.85*c;
+           
+           //3phi bins
+           if(phi<-5)
+           {
+               dp = 1.2*b*pp + 2.0*c; //phi<-5
+           }
+           if(phi>-5 && phi<5)
+           {
+               dp = b*pp + 1.65*c; //5<phi<-5
+           }
+           if(phi>5)
+           {
+               dp = b*pp + 2.0*c; //phi>5
+           }
+           
+           //continuous phi
+           //dp = (1.067066527174119 - 0.010049352496712712*phi)*b*pp + (1.8847327812928028 - 0.00017272536442927168*phi)*c;
+        }
+        if(sec == 6)
+        {
+           //dp = 0.01*b*pp + 1.75*c;
+           
+           //3phi bins
+           if(phi<-5)
+           {
+               dp = 0.5*b*pp + 2.3*c; //phi<-5
+           }
+           if(phi>-5 && phi<5)
+           {
+               dp = 0.9*b*pp + 2.5*c; //5<phi<-5
+           }
+           if(phi>5)
+           {
+               dp = 0.01*b*pp + 2.0*c; //phi>5
+           }
+           
+           //continuous phi
+           //dp = (0.4758067831735908 - 0.023804827789579545*phi)*b*pp + (2.269817623069152 - 0.014622772339714171*phi)*c;
+        }
+    }
+    
+    //pi+ correction
+    if(ivec == 1)
+    {
+        if(sec == 1)
+        {
+            //dp = -0.00936183*pp + 0.02741104;
+            dp = -0.00088868*pp*pp -0.00438569*pp + 0.02074606;
+        }
+        if(sec == 2)
+        {
+            //dp = -0.00598196*pp + 0.0063149;
+            dp = -1.133e-05*pp*pp -0.00624244*pp + 0.00669836;
+        }
+        if(sec == 3)
+        {
+            //dp = -0.00823005*pp + 0.00700298;
+            dp = -0.00082569*pp*pp -0.00468074*pp + 0.00340912;
+        }
+        if(sec == 4)
+        {
+            //dp = -0.0049758*pp + 0.00768014;
+            dp = 0.00066239*pp*pp -0.00917035*pp + 0.01293803;
+        }
+        if(sec == 5)
+        {
+            //dp = -0.01020003*pp + 0.02547266;
+            dp = -0.00012964*pp*pp -0.0096388*pp + 0.02443973;
+        }
+        if(sec == 6)
+        {
+            //dp = -0.00977866*pp + 0.02790597;
+            dp = 8.099e-05*pp*pp -0.01085396*pp + 0.03030908;
+        }
+    }
+    
+    return dp/pp;
+  };
+
+  double fe = dpp(ex,ey,ez,esec,0) + 1;
+  double fpip = dpp(pipx,pipy,pipz,pipsec,1) + 1;
+  double fpim = dpp(pimx,pimy,pimz,pimsec,2) + 1;
+\end{verbatim}
+
+\clearpage
+
+
+\section{$MM[e\pi^+X]$ distribution plots}
+\label{app:in_out_ePipX_mmplots}
+
+\subsection{$MM[e\pi^+X]$ distribution plots binned in sectors and $p_e$}
+\label{app:in_out_ePipX_mmvspe_allsec}
+
+\begin{figure}[h]
+    \begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+    	\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvspe_allsec.png}
+    \end{tcolorbox}
+    \vspace{-8pt}
+    \caption{1D Missing mass, $MM(e\pi^+X)$, distributions are shown for each sector and for each electron momentum $p_e$ bins for the inbending data, both before any corrections applied (shown in black curve) and after the modified electron corrections are applied (shown in red curve). The expected peak position (neutron mass) is represented by the red solid line.}
+    \label{fig:in_ePipX_mmvspe_allsec}
+\end{figure}
+
+\begin{figure}[h]
+    \begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+    	\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe_allsec.png}
+    \end{tcolorbox}
+    \vspace{-8pt}
+    \caption{1D Missing mass, $MM(e\pi^+X)$, distributions are shown for each sector and for each electron momentum $p_e$ bins for the outbending data, both before any corrections applied (shown in black curve) and after the modified electron corrections are applied (shown in red curve). The expected peak position (neutron mass) is represented by the red solid line.}
+    \label{fig:out_ePipX_mmvspe_allsec}
+\end{figure} 
+
+\FloatBarrier
+
+\subsection{$MM[e\pi^+X]$ distribution plots binned in sectors, $p_e$ and $\phi_e$}
+\label{app:in_out_ePipX_compSec}
+
+\begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_compSec1.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe_phibin_sec1.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{1D Missing mass, $MM(e\pi^+X)$, distribution for Sector 1 in each $p_e$ bins (horizontal rows) and $\phi_e$ bins (vertical columns) are plotted both before corrections (black curve) and after applying $\phi_e$ dependent corrections (red curve). The expected peak position (neutron mass) is represented by the red solid line.}
+	\label{fig:in_out_ePipX_compSec1}
+\end{figure}
+
+\begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_compSec2.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe_phibin_sec2.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{1D Missing mass, $MM(e\pi^+X)$, distribution for Sector 2 in each $p_e$ bins (horizontal rows) and $\phi_e$ bins (vertical columns) are plotted both before corrections (black curve) and after applying $\phi_e$ dependent corrections (red curve). The expected peak position (neutron mass) is represented by the red solid line.}
+	\label{fig:in_out_ePipX_compSec2}
+\end{figure}
+    
+\begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_compSec3.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe_phibin_sec3.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{1D Missing mass, $MM(e\pi^+X)$, distribution for Sector 3 in each $p_e$ bins (horizontal rows) and $\phi_e$ bins (vertical columns) are plotted both before corrections (black curve) and after applying $\phi_e$ dependent corrections (red curve). The expected peak position (neutron mass) is represented by the red solid line.}
+	\label{fig:in_out_ePipX_compSec3}
+\end{figure}
+    
+\begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_compSec4.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe_phibin_sec4.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{1D Missing mass, $MM(e\pi^+X)$, distribution for Sector 4 in each $p_e$ bins (horizontal rows) and $\phi_e$ bins (vertical columns) are plotted both before corrections (black curve) and after applying $\phi_e$ dependent corrections (red curve). The expected peak position (neutron mass) is represented by the red solid line.}
+	\label{fig:in_out_ePipX_compSec4}
+\end{figure}
+    
+\begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_compSec5.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe_phibin_sec5.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{1D Missing mass, $MM(e\pi^+X)$, distribution for Sector 5 in each $p_e$ bins (horizontal rows) and $\phi_e$ bins (vertical columns) are plotted both before corrections (black curve) and after applying $\phi_e$ dependent corrections (red curve). The expected peak position (neutron mass) is represented by the red solid line.}
+	\label{fig:in_out_ePipX_compSec5}
+\end{figure}
+    
+\begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_compSec6.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe_phibin_sec6.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{1D Missing mass, $MM(e\pi^+X)$, distribution for Sector 6 in each $p_e$ bins (horizontal rows) and $\phi_e$ bins (vertical columns) are plotted both before corrections (black curve) and after applying $\phi_e$ dependent corrections (red curve). The expected peak position (neutron mass) is represented by the red solid line.}
+	\label{fig:in_out_ePipX_compSec6}
+\end{figure}
+
+\FloatBarrier

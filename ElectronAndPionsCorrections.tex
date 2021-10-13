@@ -1,0 +1,466 @@
+
+
+\section{Electron and pions momentum corrections}
+\label{ecorr.section}
+
+
+
+
+
+
+\subsection{First iteration: initial extraction of electron and pion corrections using $ep\pi^+\pi^-$ channel
+\\\small\color{red} Andrey
+}
+
+
+Simultaneous correction of 3 particles:
+\begin{itemize}
+    \item electron (pol2)
+    \item pi+ (pol2)
+    \item pi- (pol2)
+\end{itemize}
+
+
+
+
+
+
+
+
+\FloatBarrier
+
+
+
+\subsection{Second iteration: modify only electron correction using $e\pi^+(N)$ channel
+\\\small\color{red} Utsav, Richard
+}
+
+
+Electron Only correction adjustment to work for single pion channel
+
+
+\subsubsection{Modified electron corrections : $p_e$ bins}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvspe.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of electron momentum $p_e$ are plotted for each sector for the inbending and outbending data are shown both before any corrections applied (shown in black) and after the modified electron corrections are applied (shown in red). The corresponding one dimensional $MM$ distributions, before and after corrections, are shown in Fig.~\ref{fig:in_ePipX_mmvspe_allsec} (inbending) and Fig.~\ref{fig:out_ePipX_mmvspe_allsec} (outbending) of Appendix~\ref{app:in_out_ePipX_mmvspe_allsec}.}
+	\label{fig:in_out_ePipX_MMvspe}
+    \end{figure}
+    \FloatBarrier
+
+    
+\subsubsection{Modified electron corrections : $p_e$ and $\phi_e$ bins}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MM0vspe_phibin.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MM0vspe_phibin.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of electron momentum $p_e$ are plotted using three phi bins, $\phi_e < -5$ (black), $-5 < \phi_e < 5$ (red), and $\phi_e > 5$ (green), for each sector for the inbending and outbending data without any corrections applied.}
+	\label{fig:in_out_ePipX_MM0vspe_phibin}
+    \end{figure}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvspe_phibin_nophicorr.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe_phibin_nophicorr.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of electron momentum $p_e$ are plotted using three phi bins, $\phi_e < -5$ (black), $-5 < \phi_e < 5$ (red), and $\phi_e > 5$ (green), for each sector for the inbending and outbending data with only momentum dependent corrections applied (no $\phi_e$ dependent corrections).}
+	\label{fig:in_out_ePipX_MMvspe_phibin_nophicorr}
+    \end{figure}
+
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvspe_phibin.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe_phibin.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of electron momentum $p_e$ are plotted using three phi bins, $\phi_e < -5$ (black), $-5 < \phi_e < 5$ (red), and $\phi_e > 5$ (green), for each sector for the inbending and outbending data after applying $\phi_e$ dependent corrections. The corresponding one dimensional $MM$ distributions, before and after corrections, for both inbending and outbending data, are shown in Figures~\ref{fig:in_out_ePipX_compSec1} - ~\ref{fig:in_out_ePipX_compSec6} of Appendix~\ref{app:in_out_ePipX_compSec}.}
+	\label{fig:in_out_ePipX_MMvspe_phibin}
+    \end{figure}
+    
+    \FloatBarrier
+
+\subsubsection{Modified electron corrections : $\phi_e$ parameterization}    
+
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_pol1phi3fit_slope.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_pol1phi3fit_slope.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{The slope parameters of the linear functions representing $\phi_e$ dependent correction are plotted as a function of $\phi_e$.}
+	\label{fig:in_out_ePipX_pol1phi3fit_slope}
+    \end{figure}    
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_pol1phi3fit_y-int.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_pol1phi3fit_y-int.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{The intercept parameters of the linear functions representing $\phi_e$ dependent correction are plotted as a function of $\phi_e$.}
+	\label{fig:in_out_ePipX_pol1phi3fit_y-int}
+    \end{figure}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvspe_phifunc.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe_phifunc.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of electron momentum $p_e$, plotted in each sector for the inbending and outbending data are shown both before any corrections applied (shown in black), after the modified electron corrections are applied (shown in red), and after $\phi_e$ parameterized electron corrections are applied (shown in green).}
+	\label{fig:in_out_ePipX_MMvspe_phifunc}
+    \end{figure}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvspe_phibin1_test.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe_phibin1_test.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of electron momentum $p_e$, plotted in each sector for the inbending and outbending data are shown for $\phi_e < -5$, both before any corrections applied (shown in black), after the modified electron corrections are applied (shown in red), and after $\phi_e$ parameterized electron corrections are applied (shown in green).}
+	\label{fig:in_out_ePipX_MMvspe_phibin1_test}
+    \end{figure}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvspe_phibin1_test.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe_phibin2_test.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of electron momentum $p_e$, plotted in each sector for the inbending and outbending data are shown for $-5 <\phi_e < 5$, both before any corrections applied (shown in black), after the modified electron corrections are applied (shown in red), and after $\phi_e$ parameterized electron corrections are applied (shown in green).}
+	\label{fig:in_out_ePipX_MMvspe_phibin2_test}
+    \end{figure}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvspe_phibin3_test.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe_phibin3_test.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of electron momentum $p_e$, plotted in each sector for the inbending and outbending data are shown for $\phi_e > 5$, both before any corrections applied (shown in black), after the modified electron corrections are applied (shown in red), and after $\phi_e$ parameterized electron corrections are applied (shown in green).}
+	\label{fig:in_out_ePipX_MMvspe_phibin3_test}
+    \end{figure}
+    
+    \FloatBarrier
+
+\subsubsection{Modified electron corrections : $\Delta p_e$ vs. $p_e$ }
+
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_deltapevspe_ePipX.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_deltapevspe_ePipX.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Shown are the $\Delta p_e$ as a function of electron momentum $p_e$ in each sector for the inbending and outbending data.}
+	\label{fig:in_out_deltapevspe_ePipX}
+    \end{figure}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_deltapevspe_3phi.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_deltapevspe_3phi.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Shown are the $\Delta p_e$ as a function of electron momentum $p_e$ in each sector and for each $\phi_e$ bins both for the inbending and outbending data.}
+	\label{fig:in_out_ePipX_deltapevspe_3phi}
+    \end{figure}
+    
+    
+    \FloatBarrier
+
+
+\subsubsection{Modified electron corrections : $p_{\pi^+}$ bins}
+
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvsppip.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvsppip.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of $\pi^+$ momentum $p_{\pi^+}$ are plotted for each sector for the inbending and outbending data are shown both before any corrections applied (shown in black) and after the modified electron corrections are applied (shown in red). The corresponding one dimensional $MM$ distributions, before and after corrections, are shown in Fig.~\ref{fig:in_ePipX_mmvsppip_allsec} (inbending) and Fig.~\ref{fig:out_ePipX_mmvsppip_allsec} (outbending) of Appendix~\ref{app:in_out_ePipX_mmvsppip_allsec}.}
+	\label{fig:in_out_ePipX_MMvsppip}
+    \end{figure}
+
+\subsubsection{Modified electron corrections : $p_{\pi^+}$ and $\phi_{\pi^+}$ bins}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MM0vsppip_phibin.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MM0vsppip_phibin.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of $\pi^+$ momentum $p_{\pi^+}$ are plotted using three phi bins, $\phi_{\pi^+} < -5$ (black), $-5 < \phi_{\pi^+} < 5$ (red), and $\phi_{\pi^+} > 5$ (green), for each sector for the inbending and outbending data without any corrections applied.}
+	\label{fig:in_out_ePipX_MM0vsppip_phibin}
+    \end{figure}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvsppip_phibin_nophicorr.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvsppip_phibin_nophicorr.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of $\pi^+$ momentum $p_{\pi^+}$ are plotted using three phi bins, $\phi_{\pi^+} < -5$ (black), $-5 < \phi_{\pi^+} < 5$ (red), and $\phi_{\pi^+} > 5$ (green), for each sector for the inbending and outbending data with only momentum dependent corrections applied (no $\phi_e$ dependent corrections).}
+	\label{fig:in_out_ePipX_MMvsppip_phibin_nophicorr}
+    \end{figure}
+
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvsppip_phibin.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvsppip_phibin.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of $\pi^+$ momentum $p_{\pi^+}$ are plotted using three phi bins, $\phi_{\pi^+} < -5$ (black), $-5 < \phi_{\pi^+} < 5$ (red), and $\phi_{\pi^+} > 5$ (green), for each sector for the inbending and outbending data after applying $\phi_e$ dependent corrections.}
+	\label{fig:in_out_ePipX_MMvsppip_phibin}
+    \end{figure}
+    
+    \FloatBarrier
+
+
+
+\subsection{Third iteration: modify $\pi^+$ corrections using $e\pi^+(N)$ channel
+\\\small\color{red} Utsav, Richard
+}
+
+\subsubsection{Modified $\pi^+$ corrections: $p_e$ bins}
+
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvspe_comp.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe_comp.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of electron momentum $p_e$ are plotted for each sector for the inbending and outbending data are shown both before any corrections applied (shown in black) and after the modified electron corrections are applied (shown in red).}
+	\label{fig:in_out_ePipX_MMvspe_comp}
+    \end{figure}
+    \FloatBarrier
+
+\subsubsection{Modified $\pi^+$ corrections: $p_e$ and $\phi_e$ bins}
+
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvspe_phibin_pip_pol1.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe_phibin_pip_pol1.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of $\pi^+$ momentum $p_e$ are plotted using three phi bins, $\phi_{\pi^+} < -5$ (black), $-5 < \phi_{\pi^+} < 5$ (red), and $\phi_{\pi^+} > 5$ (green), for each sector for the inbending and outbending data after applying linear $\phi_e$ and linear $\phi_{\pi^+}$ dependent corrections.}
+	\label{fig:in_out_ePipX_MMvspe_phibin_pip_pol1}
+    \end{figure}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvspe_phibin_pip_pol2.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvspe_phibin_pip_pol2.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of $\pi^+$ momentum $p_e$ are plotted using three phi bins, $\phi_{\pi^+} < -5$ (black), $-5 < \phi_{\pi^+} < 5$ (red), and $\phi_{\pi^+} > 5$ (green), for each sector for the inbending and outbending data after applying linear $\phi_e$ and quadratic $\phi_{\pi^+}$ dependent corrections.}
+	\label{fig:in_out_ePipX_MMvspe_phibin_pip_pol2}
+    \end{figure}
+    
+    \FloatBarrier
+
+
+\subsubsection{Modified $\pi^+$ corrections: $p_{\pi^+}$}
+
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvsppip_comp.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvsppip_comp.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of $\pi^+$ momentum $p_{\pi^+}$ are plotted for each sector for the inbending and outbending data are shown both before any corrections applied (shown in black) and after the modified electron corrections are applied (shown in red).}
+	\label{fig:in_out_ePipX_MMvsppip_comp}
+    \end{figure}
+    
+    \FloatBarrier
+    
+
+\subsubsection{Modified $\pi^+$ corrections : $p_e$ and $\phi_e$ bins}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvsppip_phibin_pip_pol1.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvsppip_phibin_pip_pol1.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of electron momentum $p_{\pi^+}$ are plotted using three phi bins, $\phi_{\pi^+} < -5$ (black), $-5 < \phi_{\pi^+} < 5$ (red), and $\phi_{\pi^+} > 5$ (green), for each sector for the inbending and outbending data after applying linear $\phi_e$ and linear $\phi_{\pi^+}$ dependent corrections.}
+	\label{fig:in_out_ePipX_MMvsppip_phibin_pip_pol1}
+    \end{figure}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvsppip_phibin_pip_pol2.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvsppip_phibin_pip_pol2.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of electron momentum $p_{\pi^+}$ are plotted using three phi bins, $\phi_{\pi^+} < -5$ (black), $-5 < \phi_{\pi^+} < 5$ (red), and $\phi_{\pi^+} > 5$ (green), for each sector for the inbending and outbending data after applying linear $\phi_e$ and quadratic $\phi_{\pi^+}$ dependent corrections.}
+	\label{fig:in_out_ePipX_MMvsppip_phibin_pip_pol2}
+    \end{figure}
+    
+    \FloatBarrier
+
+
+\subsubsection{Modified $\pi^+$ corrections : $\phi_{\pi^+}$ parameterization}     
+
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_pol1phi3fit_slope_pip.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_pol1phi3fit_slope_pip.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{The slope parameters of the linear functions representing $\phi_{\pi^+}$ dependent correction are plotted as a function of $\phi_{\pi^+}$.}
+	\label{fig:in_out_ePipX_pol1phi3fit_slope_pip}
+    \end{figure}    
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_pol1phi3fit_y-int_pip.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_pol1phi3fit_y-int_pip.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{The intercept parameters of the linear functions representing $\phi_{\pi^+}$ dependent correction are plotted as a function of $\phi_{\pi^+}$.}
+	\label{fig:in_out_ePipX_pol1phi3fit_y-int_pip}
+    \end{figure}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvsppip_phifunc.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvsppip_phifunc.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of electron momentum $p_{\pi^+}$, plotted in each sector for the inbending and outbending data are shown both before any corrections applied (shown in black), after the modified electron corrections are applied (shown in red), and after $\phi_{\pi^+}$ parameterized electron corrections are applied (shown in green).}
+	\label{fig:in_out_ePipX_MMvsppip_phifunc}
+    \end{figure}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvsppip_phibin1_test.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvsppip_phibin1_test.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of electron momentum $p_{\pi^+}$, plotted in each sector for the inbending and outbending data are shown for $\phi_{\pi^+} < -5$, both before any corrections applied (shown in black), after the modified electron and $\pi^+$ linear corrections are applied (shown in red), and after electron and $\phi_{\pi^+}$ parameterized linear corrections are applied (shown in green).}
+	\label{fig:in_out_ePipX_MMvsppip_phibin1_test}
+    \end{figure}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvsppip_phibin1_test.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvsppip_phibin2_test.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of electron momentum $p_{\pi^+}$, plotted in each sector for the inbending and outbending data are shown for $-5 <\phi_{\pi^+} < 5$, both before any corrections applied (shown in black), after the modified electron and $\pi^+$ linear corrections are applied (shown in red), and after electron and $\phi_{\pi^+}$ parameterized linear corrections are applied (shown in green).}
+	\label{fig:in_out_ePipX_MMvsppip_phibin2_test}
+    \end{figure}
+    
+    \begin{figure}[h]
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Inbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/in_ePipX_MMvsppip_phibin3_test.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\begin{tcolorbox}[halign=center,colback=white,colbacktitle=black!40!white,colframe=black!80!white,left=0pt,right=0pt,top=0pt,bottom=0pt,boxrule=0.3pt,title=\scriptsize\bfseries Outbending]
+		\includegraphics[width=0.9\linewidth]{pictures/utsav/out_ePipX_MMvsppip_phibin3_test.png}
+	\end{tcolorbox}
+	\vspace{-8pt}
+	\caption{Missing mass, $MM(e\pi^+X)$, as a function of electron momentum $p_{\pi^+}$, plotted in each sector for the inbending and outbending data are shown for $\phi_{\pi^+} > 5$, both before any corrections applied (shown in black), after the modified electron and $\pi^+$ linear corrections are applied (shown in red), and after electron and $\phi_{\pi^+}$ parameterized linear corrections are applied (shown in green).}
+	\label{fig:in_out_ePipX_MMvsppip_phibin3_test}
+    \end{figure}
+    
+    \FloatBarrier
+
+\subsection{Fourth iteration: modify only $\pi^-$ momentum $ep\pi^+\pi^-$ channel
+\\\small\color{red} Andrey, Nick
+}
+
+$\pi^-$ Only correction adjustment
+\begin{itemize}
+    \item $\pi^-$ (pol1), fixing electron and pi+ from Utsav work, use pi- angles to calculate pi- momentum from equation:\\
+    ($beam+target-e-\pi^+-\pi^-)^2==M^2_{proton}$
+\end{itemize}

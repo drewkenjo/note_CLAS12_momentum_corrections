@@ -1,0 +1,41 @@
+\section{Procedure
+\\\small\color{red} Andrey, Utsav
+}
+
+
+Particles momenta were studied using multiple exclusive channels such as exclusive $e\pi^+(N)$, $e\pi^+\pi^-P$ and $ep\pi^0$ channels.
+Once the final state particles are well identified, the invariant mass distributions can be used to study the shifts of the masses from their nominal values and deduce the corrections to the particle momenta.
+
+
+Kinematic variables:
+\begin{itemize}
+    \item Momentum, $\theta$, $\phi$
+    \item v0 shifted $\phi$ or v1 shifted $\phi$
+\end{itemize}
+
+
+The missing mass quantities in exclusive channels are often functions of multiple variables and multiple particles.
+Therefore, the shifts from their nominal value can be explained by the reconstruction errors in all of the involved particles.
+In case of exclusive $\pi^0$ electroproduction, both electron and proton momentum inaccuracies are contributing to the shifts $MM^2_{epX}$ from nominal value.
+Developing momentum corrections using single channel is unreliable because constraining missing mass to the desired value using the correction to only one particle is technically wrong.
+And correcting multiple particles simultaneously to constrain a single invariant quantity can give multiple number of solutions that can work only for this individual channel but not for the other channels.
+
+To partially overcome this problem and develop more stable and universal correction for each particle, we can combine multiple exclusive channels and constrain missing mass quantities from each channel using the same correction function for each particle type.
+CLAS12 large acceptance allows us to select multiple exclusive channels from the same dataset providing an opportunity to develop ad-hoc corrections for each particles using this method.
+Three exclusive channels were used to develop the momentum corrections for charged particles: $ep\rightarrow e\pi^+(N)$, $ep\rightarrow e\pi^+\pi^-P$ and $ep\rightarrow ep\pi^0$.
+Due to the limited statistics, the correction function for each particle is chosen a function of single experimental variable: momentum.
+The studies of missing mass distributions for different angular and momentum regions indicate that momentum dependence is one of the most common occurrences.
+Additionally, CLAS12 detectors and algorithms perform reconstruction of angles more reliably than momentum.
+Initially, the electron, $\pi^+$ and $\pi^-$ corrections were developed using the constraints on $MM_{e\pi^+\pi^-X}$ values for events from two pions channel events.
+The second degree polynomial was chosen for momentum dependent correction function:
+\begin{equation}
+	\Delta P = a\cdot p^2+b\cdot p+c
+\end{equation}
+where $a$, $b$ and $c$ parameters are unique for each particles flavor in each sector.
+For two pions channel it gives us 3x3x6=54 free parameters.
+
+Firstly the fitting procedure was developed and performed to find the set of these parameters which provides the most narrow peak distribution for $MM_{e\pi^+\pi^-X}$ at expected proton mass position.
+Secondly the parameters for electron and positively charged pion were used to calculate $MM_{e\pi^+X}$ values for exclusive $ep\rightarrow e\pi^+(N)$ events, and electron correction was reduced to linear function and its parameters were modified to constrain $MM_{e\pi^+X}$ distributions at expected neutron mass position.
+Thirdly the parameters were applied to the two pions channel again but electron and positively charged pion parameters were fixed, using the $\pi^-$ correction parameters to constrain $MM_{e\pi^+\pi^-X}$ values.
+As a result the correction functions for electron, $\pi^+$ and $\pi^-$ were developed and shown to work across two exclusive channels.
+
