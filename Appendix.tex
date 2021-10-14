@@ -5,7 +5,8 @@
 
 \subsection{Inbending Data: Momentum Corrections Script}
 \label{app:in_code}
-  \begin{verbatim}
+
+ \begin{lstlisting}
 double xx[] = 
 {
 0.0263375, 0.0158871, 0.0130852, 0.0252757, 0.0156601, 0.00984872,
@@ -240,11 +241,11 @@ auto dpp = [&](float px, float py, float pz, int sec, int ivec)
 double fe = dpp(ex,ey,ez,esec,0) + 1;
 double fpip = dpp(pipx,pipy,pipz,pipsec,1) + 1;
 double fpim = dpp(pimx,pimy,pimz,pimsec,2) + 1;
-  \end{verbatim}
+ \end{lstlisting}
   
 \subsection{Outbending Data: Momentum Corrections Script}
 \label{app:out_code}
-\begin{verbatim}
+\begin{lstlisting}
 double xx[] = 
 {
 0.0219879, 0.00406117, 0.000287491, 0.0244179, 0.0169383, 0.000121762,
@@ -474,7 +475,7 @@ double xx[] =
   double fe = dpp(ex,ey,ez,esec,0) + 1;
   double fpip = dpp(pipx,pipy,pipz,pipsec,1) + 1;
   double fpim = dpp(pimx,pimy,pimz,pimsec,2) + 1;
-\end{verbatim}
+\end{lstlisting}
 
 \clearpage
 
