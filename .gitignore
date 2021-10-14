@@ -2,3 +2,4 @@ build
 sconscript
 sconstruct
 CLAS12_momentum_corrections.pdf
+.sconsign.dblite
